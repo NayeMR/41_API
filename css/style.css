@@ -1,0 +1,16 @@
+.txt{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	display:block;
+}
+a{
+	display: block;
+	opacity: 1%;
+}
+.display{
+	display: block;
+}
+.displayLine{
+	display: inline-block;
+}
