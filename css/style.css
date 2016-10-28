@@ -11,6 +11,7 @@ body{
 a{
 	display: block;
 	opacity: 1%;
+	cursor: pointer;
 }
 .display{
 	display: block;
@@ -20,4 +21,5 @@ a{
 }
 .div{
 	background-color: #FFDAB9;
+	display: inline-block;
 }
