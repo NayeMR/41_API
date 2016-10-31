@@ -2,16 +2,15 @@ body{
 	background-color: #AFEEEE;
 
 }
-.txt{
-	background-color: red;
-	width: 100px;
-	height: 100px;
-	display:block;
-}
+
 a{
 	display: block;
 	opacity: 1%;
-	cursor: pointer;
+	cursor: move;
+}
+textarea{
+	overflow-y: scroll;
+	cursor: move;
 }
 .display{
 	display: block;
@@ -21,5 +20,7 @@ a{
 }
 .div{
 	background-color: #FFDAB9;
-	display: inline-block;
+	display: table;
+	cursor: move;
+	float: left;
 }

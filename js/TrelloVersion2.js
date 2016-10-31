@@ -26,8 +26,7 @@ function trello(){
 	divPapaTio.setAttribute("ondrop","drop(event)");
 	divPapaTio.setAttribute("ondragover","allowDrop(event)");
 	divPapa.appendChild(divPapaTio);
-
-	ocultar();
+	mostrar();
 	//evento click al button guardar
 
 	botonGuardar.onclick = function(){
@@ -49,9 +48,9 @@ function trello(){
 		divPapa.removeChild(botonGuardar);
 		//crear otro enlace para añadir una nueva tarea
 		mostrar();
-		document.getElementById("inicio").innerHTML = "Añadir una tarjeta";
 		a.onclick = function(){
 			crearTextarea();
+			document.getElementById("inicio").innerHTML = "Añadir una tarjeta";	
 		}
 	}
 	//click a la img cerrar
@@ -77,7 +76,7 @@ function allowDrop(ev) {
 }
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("div");
     ev.target.appendChild(document.getElementById(data));
 }
 function crearTextarea(){
@@ -89,7 +88,7 @@ function crearTextarea(){
 	textarea.getAttribute("cols","20");
 	textarea.getAttribute("rows","30");
 	textarea.getAttribute("class","txt");
-	textarea.getAttribute("class","display");
+	textarea.className= "display";
 	divTextarea.appendChild(textarea);
 	//crear el boton guardar
 	var botonAgregarTarjeta= document.createElement("input");
@@ -101,20 +100,32 @@ function crearTextarea(){
 	img.setAttribute("src","img/error.png");
 	//añadir la imagen al div papa
 	divTextarea.appendChild(img);
+	//evento click al boton añadir, si esta vacia sara una alert
+	botonAgregarTarjeta.onclick = function btnAgregar(){
+		if(textarea.value == ""){
+			alert("No se permiten tarjetas vacía...");
+		}else{
+			var texto = document.createTextNode(textarea.value);
+			textarea.appendChild(texto);
+			divTextarea.appendChild(textarea);
+			divTextarea.removeChild(botonAgregarTarjeta);
+			divTextarea.removeChild(img);
+		}
+	}
 	//click a la img cerrar
 	img.onclick = function(){
 		//divPapa.insertBefore(nuevo_nodo,nodo_de_referencia);
 		divTextarea.removeChild(textarea);
 		divTextarea.removeChild(img);
 		divTextarea.removeChild(botonAgregarTarjeta);
-		mostrar();
 	}
-	//evento click al boton añadir 
-	botonAgregarTarjeta.onclick = function(){
-		var texto = document.createTextNode(textarea.value);
-		textarea.appendChild(texto);
-		divTextarea.appendChild(textarea);
-		divTextarea.removeChild(botonAgregarTarjeta);
-	}
-
 }
+/*
+		//crear divhermano de divpapa
+		var divPapaTio= document.createElement("div");
+		divPapaTio.setAttribute("class","div");
+		divPapaTio.setAttribute("ondrop","drop(event)");
+		divPapaTio.setAttribute("draggable","true");
+		divPapaTio.setAttribute("ondragover","allowDrop(event)");
+		divPapa.appendChild(divPapaTio);
+*/
