@@ -1,15 +1,23 @@
 
 function trello(){
 	var a = document.getElementById("inicio");
+	//Div de fuente
 	var divPapa = document.getElementById("divPapa");
+	divPapa.setAttribute("draggable","true");
+	divPapa.setAttribute("ondragstart","drag(event)");
 	divPapa.className = "div";
-
+	//crear divhermano de divpapa..... DESTINO
+	var divPapaTio= document.createElement("div");
+	divPapaTio.setAttribute("class","displayLine");
+	divPapaTio.setAttribute("ondrop","drop(event)");
+	divPapaTio.setAttribute("ondragover","allowDrop(event)");
+	divPapa.appendChild(divPapaTio);
+	//crear input
 	var input= document.createElement("input");
 	input.setAttribute("type","text");
 	input.setAttribute("placeholder","Añadir una Lista");
 	input.setAttribute("class","display");
 	divPapa.appendChild(input);
-	
 	//crear el boton guardar
 	var botonGuardar= document.createElement("input");
 	botonGuardar.setAttribute("type","button");
@@ -20,17 +28,10 @@ function trello(){
 	img.setAttribute("src","img/error.png");
 	//añadir la imagen al div papa
 	divPapa.appendChild(img);
-	//crear divhermano de divpapa
-	var divPapaTio= document.createElement("div");
-	divPapaTio.setAttribute("class","div");
-	divPapaTio.setAttribute("ondrop","drop(event)");
-	divPapaTio.setAttribute("ondragover","allowDrop(event)");
-	divPapa.appendChild(divPapaTio);
 	mostrar();
 	//evento click al button guardar
-
 	botonGuardar.onclick = function(){
-		ocultar();
+		document.getElementById("inicio").innerHTML = "Añadir una tarjeta";
 		//vaciar el texto en una lista cada vez que le de click al boton guardar
 		var insertDiv = document.createElement("div");
 		insertDiv.setAttribute("class","display");
@@ -49,8 +50,7 @@ function trello(){
 		//crear otro enlace para añadir una nueva tarea
 		mostrar();
 		a.onclick = function(){
-			crearTextarea();
-			document.getElementById("inicio").innerHTML = "Añadir una tarjeta";	
+			crearTextarea();	
 		}
 	}
 	//click a la img cerrar
@@ -71,12 +71,15 @@ function mostrar(){
 	//muestra al elemenbto a de añadir lista
 	document.getElementById('inicio').style.display = 'block';
 };
-function allowDrop(ev) {
+function allowDrop(ev){
     ev.preventDefault();
 }
-function drop(ev) {
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev){
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("div");
+    var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
 function crearTextarea(){
@@ -121,11 +124,5 @@ function crearTextarea(){
 	}
 }
 /*
-		//crear divhermano de divpapa
-		var divPapaTio= document.createElement("div");
-		divPapaTio.setAttribute("class","div");
-		divPapaTio.setAttribute("ondrop","drop(event)");
-		divPapaTio.setAttribute("draggable","true");
-		divPapaTio.setAttribute("ondragover","allowDrop(event)");
-		divPapa.appendChild(divPapaTio);
+		
 */

@@ -6,20 +6,20 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-	<div class="container">
-		<div class="row">
+<body data-spy="scroll" data-target=".navbar">
+	<div class="container-fluid">
+		<div class="row color">
 			<div class="col-xs-12 col-md-12 col-lg-12">
 				<h1 class="text-center">myTrello</h1>
 			</div>
 		</div>
-		
-		<div id="tabla" class="row">
-			<div class="col-xs-3 col-md-3 col-lg-3">
-				<div id="divPapa">
-					<a id="inicio" onclick="trello()"  draggable="true">Añadir Lista</a>
+		<div class="row padding">
+			<div class="col-xs-12 col-md-12 col-lg-12">
+				<div draggable="true" ondragstart="drag(event)" id="divPapa">
+					<a id="inicio" onclick="trello()" draggable="true" ondragstart="drag(event)">Añadir Lista</a>
 				</div>
 			</div>
+			<!--<div id="div1" class="color displayLine" ondrop="drop(event)" ondragover="allowDrop(event)"></div>-->
 		</div>
 	</div>
 	<script src="js/TrelloVersion2.js"></script>

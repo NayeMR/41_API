@@ -1,8 +1,6 @@
 body{
 	background-color: #AFEEEE;
-
 }
-
 a{
 	display: block;
 	opacity: 1%;
@@ -23,4 +21,19 @@ textarea{
 	display: table;
 	cursor: move;
 	float: left;
+}
+.color{
+	background-color: #F08080;
+}
+.padding{
+	padding: 5%;
+}
+.draggable {
+    font: bold 16px sans-serif;
+    width: 140px;
+    height: 20px;
+    text-align: center;
+    background: white;
+    cursor: move;
+    margin-top: 20px;
 }
